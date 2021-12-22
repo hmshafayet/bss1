@@ -13,6 +13,7 @@ class AddbookController extends Controller
     public function addbook()
     {
         $categories=Category::all();
+       
         
         return view('admin.pages.addbook',compact('categories'));
     }

@@ -10,7 +10,7 @@ class BookreportController extends Controller
 {
     public function bookreport()
     {
-        $viewbookreport = Book::all();
+        $viewbookreport = Book::with('categories')->get();
         // dd($viewbookreport);
         return view('admin.pages.bookreport',compact('viewbookreport'));
     }

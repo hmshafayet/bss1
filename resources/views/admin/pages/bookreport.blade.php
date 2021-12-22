@@ -25,18 +25,19 @@
     </tr>
   </thead>
   <tbody>
-   @foreach ($viewbookreport as $key=>$viewbookreport)
+   @foreach ($viewbookreport as $key=>$book)
+   
     <tr>
-      <td>{{$viewbookreport->id}}</td>
-      <td>{{$viewbookreport->book_name}}</td>
-      <td>{{$viewbookreport->ssl_no}}</td>
-      <td>{{$viewbookreport->author_name}}</td>
-      <td>{{$viewbookreport->category}}</td>
-      <td>{{$viewbookreport->quantity}}</td>
-      <td>{{$viewbookreport->status}}</td>
+      <td>{{$book->id}}</td>
+      <td>{{$book->book_name}}</td>
+      <td>{{$book->ssl_no}}</td>
+      <td>{{$book->author_name}}</td>
+      <td>{{optional($book->categories)->categoryname}}</td>
+      <td>{{$book->quantity}}</td>
+      <td>{{$book->status}}</td>
       <td>
-        <a class="btn btn-primary" href="{{route('bookdetails',$viewbookreport->id)}}">Book Details</a>
-        <a class="btn btn-info" href="{{route('bookdelete',$viewbookreport->id)}}">Delete</a>
+        <a class="btn btn-primary" href="{{route('bookdetails',$book->id)}}">Book Details</a>
+        <a class="btn btn-info" href="{{route('bookdelete',$book->id)}}">Delete</a>
       </td>
 
 

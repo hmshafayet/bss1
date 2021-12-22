@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\IssuebookController;
 use App\Http\Controllers\Backend\IssuereportController;
 use App\Http\Controllers\Backend\LogoutController;
 use App\Http\Controllers\Backend\AddcategoryController;
+use App\Models\Book;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,22 @@ use App\Http\Controllers\Backend\AddcategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/website', function () {
+
+    $books=Book::all();
+    
+    return view('website.pages.home',compact('books'));
+
+});
+Route::group(['prefix'=>'website'],function(){
+
+
+});
 
 Route::get('/', function () {
     return view('admin.pages.home');
 });
+     Route::group(['prefix'=>'admin'],function(){
 
 Route::get('/admin',[AdminController::class,'admin'])->name('admin');
 //book
@@ -58,3 +71,4 @@ Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 Route::get('/addcategory',[AddcategoryController::class,'addcategory'])->name('addcategory');
 Route::post('/submit/category',[AddcategoryController::class,'submitcategory'])->name('submitcategory');
 Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categorydelete'])->name('category.delete');
+});

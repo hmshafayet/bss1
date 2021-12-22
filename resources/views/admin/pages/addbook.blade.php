@@ -25,13 +25,15 @@
     <input name="bookdescription" type="text" class="form-control" id="exampleInputdescription" aria-describedby="bookHelp" placeholder="Enter book description here">
     <small id="descriptionHelp" class="form-text text-muted"></small>
   </div>
+  
   <div class="form-group col-md-10">
       <label for="inputcategory">Category</label>
       <select name="category" id="inputcategory" class="form-control">
         <option selected>Enter Category Name</option>
-        @foreach ($categories as $category)
+      
+        @foreach($categories as $category)
 
-<option value="{{$category->id}}">{{$category->category}}</option>
+<option value="{{$category->id}}">{{$category->categoryname}}</option>
 
 @endforeach
       </select>

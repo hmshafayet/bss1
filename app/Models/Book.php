@@ -12,8 +12,8 @@ class Book extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category','id');
     }
 }
