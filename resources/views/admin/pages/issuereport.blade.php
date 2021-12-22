@@ -2,39 +2,35 @@
 
 @section('content')
 
- <h1>Issue Report Here</h1>
+ <h1>Issued Book Report</h1>
  <table class="table">
   <thead>
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Student Name</th>
       <th scope="col">Student Id</th>
       <th scope="col">Book Name</th>
-      <th scope="col">Book Id</th>
+      <th scope="col">Book ISBN</th>
       <th scope="col">Issue Date</th>
       <th scope="col">Return Date</th>
       <th scope="col">Fine</th>
     </tr>
-  <!-- </thead>
+   </thead>
   <tbody>
+  @foreach ($viewissuereports as $key=>$viewissuereport)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th>{{$key+1}}</th>
+      <td>{{$viewissuereport->studentname}}</td>
+      <td>{{$viewissuereport->studentid}}</td>
+      <td>{{$viewissuereport->bookname}}</td>
+      <td>{{$viewissuereport->bookid}}</td>
+      <td>{{$viewissuereport->issuedate}}</td>
+      <td>{{$viewissuereport->returndate}}</td>
+  
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody> -->
+    @endforeach
+  </tbody>
+ 
 </table>
 
 

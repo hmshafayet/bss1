@@ -12,6 +12,7 @@ class AddstudentController extends Controller
     {
         return view('admin.pages.addstudent');
     }
+    
     public function submitstudent(Request $request)
     {
         // dd($request->all()); 
@@ -24,5 +25,26 @@ class AddstudentController extends Controller
 
     ]);
     return redirect()->back();
+
+    }
+    public function viewstudentreport(){
+        $viewstudentreport=Student::all();
+        // dd($viewbookreport);
+        return view('admin.pages.studentreport',compact('viewstudentreport'));
+    }
+
+    public function studentdetails($id)
+    {
+        $student=Student::find($id);
+       // dd($student);
+       return view ('admin.pages.studentdetails',compact('student'));
+
+    }
+    public function studentdelete($id)
+    {
+        Student::find($id)->delete();
+        return redirect ()->back()->with('success','Student Deleted Succesfully');
+       // dd($student);
+
     }
 }

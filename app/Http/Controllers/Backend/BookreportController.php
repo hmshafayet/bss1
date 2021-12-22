@@ -11,6 +11,7 @@ class BookreportController extends Controller
     public function bookreport()
     {
         $viewbookreport = Book::all();
+        // dd($viewbookreport);
         return view('admin.pages.bookreport',compact('viewbookreport'));
     }
 }

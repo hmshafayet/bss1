@@ -18,6 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('book_name');
             $table->string('ssl_no');
             $table->string('author_name');
+            $table->string('category');
             $table->string('description');
             $table->integer('price');
             $table->integer('quantity');

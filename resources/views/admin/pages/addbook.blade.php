@@ -27,12 +27,13 @@
   </div>
   <div class="form-group col-md-10">
       <label for="inputcategory">Category</label>
-      <select name="bookcategory" id="inputcategory" class="form-control">
-        <option selected>Enter category name</option>
-        <option>novel </option>
-        <option>fiction </option>
-        <option>history </option>
-        <option>nonfiction </option>
+      <select name="category" id="inputcategory" class="form-control">
+        <option selected>Enter Category Name</option>
+        @foreach ($categories as $category)
+
+<option value="{{$category->id}}">{{$category->category}}</option>
+
+@endforeach
       </select>
     </div>
   <div class="form-group col-md-10 ">

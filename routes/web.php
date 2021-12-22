@@ -33,6 +33,8 @@ Route::get('/addbook',[AddbookController::class,'addbook'])->name('addbook');
 Route::post('/submit/book',[AddbookController::class,'submitbook'])->name('submitbook');
 Route::get('/viewbook',[AddbookController::class,'viewbookreport'])->name('viewbookreport');
 Route::get('/bookreport',[BookreportController::class,'bookreport'])->name('bookreport');
+Route::get('/book/details/{id}',[AddbookController::class,'bookdetails'])->name('bookdetails');
+Route::get('/book/delete/{id}',[AddbookController::class,'bookdelete'])->name('bookdelete');
 //
 Route::get('/bookrequest',[BookrequestController::class,'bookrequest'])->name('bookrequest');
 //user book request
@@ -40,10 +42,19 @@ Route::get('/bookrequest',[BookrequestController::class,'bookrequest'])->name('b
 //student
 Route::get('/addstudent',[AddstudentController::class,'addstudent'])->name('addstudent');
 Route::post('/submit/student',[AddstudentController::class,'submitstudent'])->name('submitstudent');
+Route::get('/viewstudent',[AddstudentController::class,'viewstudentreport'])->name('viewstudentreport');
 Route::get('/studentreport',[StudentreportController::class,'studentreport'])->name('studentreport');
+Route::get('/student/details/{id}',[AddstudentController::class,'studentdetails'])->name('studentdetails');
+Route::get('/student/delete/{id}',[AddstudentController::class,'studentdelete'])->name('studentdelete');
+//issuebook
 Route::get('/issuebook',[IssuebookController::class,'issuebook'])->name('issuebook');
 Route::post('/submit/issue',[IssuebookController::class,'submitissue'])->name('submitissue');
+Route::get('/viewissue',[IssuebookController::class,'viewissuereport'])->name('viewissuereport');
 Route::get('/issuereport',[IssuereportController::class,'issuereport'])->name('issuereport');
+
 Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
+
+//category
 Route::get('/addcategory',[AddcategoryController::class,'addcategory'])->name('addcategory');
 Route::post('/submit/category',[AddcategoryController::class,'submitcategory'])->name('submitcategory');
+Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categorydelete'])->name('category.delete');

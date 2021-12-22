@@ -3,33 +3,40 @@
 @section('content')
 
  <h1>Student Report</h1>
+
+ @if(session()->has('success'))
+    <p class="alert alert-success">
+        {{ session()->get('success') }}
+</p>
+@endif
+
  <table class="table">
   <thead>
     <tr>
+    <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">StudentId</th>
       <th scope="col">Email</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Issued Book</th>
+      <th scope="col">Action</th>
       
     </tr>
   </thead>
-  <!-- <tbody>
+   <tbody>
+     @foreach ($reports as $key=>$report)
     <tr>
-      <th scope="row">1</th>
+      <th>{{$key+1}}</th>
+      <td>{{$report->name}}</td>
+      <td>{{$report->student_id}}</td>
+      <td>{{$report->email}}</td>
       <td></td>
-      <td></td>
+      <td>
+        <a class="btn btn-primary" href="{{route('studentdetails',$report->id)}}">Details</a>
+        <a class="btn btn-info" href="{{route('studentdelete',$report->id)}}">Delete</a>
+      </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody> -->
+    @endforeach
+  </tbody>
 </table>
 
 

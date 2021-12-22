@@ -7,11 +7,12 @@
  <table class="table">
   <thead>
     <tr>
-      <th scope="col">PersonName</th>
+      <th scope="col">StudentID</th>
       <th scope="col">BookName</th>
       <th scope="col">BookId</th>
+      <th scope="col">Avaibility</th>
       <th scope="col">Days</th>
-      <th scope="col">Approve</th>
+      <th scope="col">Approval</th>
     </tr>
   </thead>
   <!-- <tbody>
