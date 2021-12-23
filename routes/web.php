@@ -45,7 +45,9 @@ Route::get('/website', function () {
 Route::get('/', function () {
     return view('admin.pages.home');
 });
-     Route::group(['prefix'=>'admin'],function(){
+Route::get('admin/login',[BackendUser::class,'login'])->name('admin.login');
+
+     Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 Route::get('/admin',[AdminController::class,'admin'])->name('admin');
 //book
@@ -81,4 +83,5 @@ Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categ
 
 Route::get('/customers',[BackendUser::class,'customerlist'])->name('customer.list');
 Route::get('/users',[BackendUser::class,'userlist'])->name('user.list');
+
 });

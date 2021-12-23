@@ -18,6 +18,7 @@ class UserController extends Controller
        'name'=>$request->user_name,
        'email'=>$request->user_email,
        'password'=>$request->user_password,
+       'role'=>'customer',
        'mobile'=>bcrypt($request->user_mobile),
        ]);
        return redirect()->back()->with('success','SignUp Successfull');
