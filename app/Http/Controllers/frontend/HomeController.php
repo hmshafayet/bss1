@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function website(){
-        return view('website.master');
+    public function home(){
+        $books=Book::all();
+    
+        return view('website.pages.home',compact('books'));
+
     }
 }

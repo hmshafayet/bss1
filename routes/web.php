@@ -1,17 +1,20 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\AddbookController;
-use App\Http\Controllers\Backend\BookreportController;
-use App\Http\Controllers\Backend\BookrequestController;
-use App\Http\Controllers\Backend\AddstudentController;
-use App\Http\Controllers\Backend\StudentreportController;
-use App\Http\Controllers\Backend\IssuebookController;
-use App\Http\Controllers\Backend\IssuereportController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\frontend\UserController;
+use App\Http\Controllers\Backend\UserController as BackendUser;
 use App\Http\Controllers\Backend\LogoutController;
+use App\Http\Controllers\Backend\AddbookController;
+use App\Http\Controllers\Backend\IssuebookController;
+use App\Http\Controllers\Backend\AddstudentController;
+use App\Http\Controllers\Backend\BookreportController;
 use App\Http\Controllers\Backend\AddcategoryController;
-use App\Models\Book;
+use App\Http\Controllers\Backend\BookrequestController;
+use App\Http\Controllers\Backend\IssuereportController;
+use App\Http\Controllers\Backend\StudentreportController;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +26,21 @@ use App\Models\Book;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/signup',[UserController::class,'signupform'])->name('user.signup');
+Route::post('/signup/store',[UserController::class,'signupformpost'])->name('user.signup.store');
+
+
 Route::get('/website', function () {
 
     $books=Book::all();
     
     return view('website.pages.home',compact('books'));
-
 });
-Route::group(['prefix'=>'website'],function(){
 
+// Route::group(['prefix'=>'website'],function(){
+// });
 
-});
 
 Route::get('/', function () {
     return view('admin.pages.home');
@@ -71,4 +78,7 @@ Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 Route::get('/addcategory',[AddcategoryController::class,'addcategory'])->name('addcategory');
 Route::post('/submit/category',[AddcategoryController::class,'submitcategory'])->name('submitcategory');
 Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categorydelete'])->name('category.delete');
+
+Route::get('/customers',[BackendUser::class,'customerlist'])->name('customer.list');
+Route::get('/users',[BackendUser::class,'userlist'])->name('user.list');
 });

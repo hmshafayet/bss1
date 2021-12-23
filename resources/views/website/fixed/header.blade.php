@@ -1,5 +1,5 @@
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center header-transparent">
+<header id="header" class="d-flex align-items-center header-transparent">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
@@ -29,6 +29,7 @@
               
             </ul>
           </li>
+          <li><a class="nav-item nav-link" href="{{route('user.signup')}}">SignUp</a></li>
           
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
