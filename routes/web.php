@@ -46,10 +46,12 @@ Route::get('/', function () {
     return view('admin.pages.home');
 });
 Route::get('admin/login',[BackendUser::class,'login'])->name('admin.login');
+Route::post('admin/login/post',[BackendUser::class,'loginpost'])->name('admin.login.post');
 
      Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 Route::get('/admin',[AdminController::class,'admin'])->name('admin');
+Route::get('/logout',[BackendUser::class,'logout'])->name('logout');
 //book
 Route::get('/addbook',[AddbookController::class,'addbook'])->name('addbook');
 Route::post('/submit/book',[AddbookController::class,'submitbook'])->name('submitbook');
@@ -74,7 +76,6 @@ Route::post('/submit/issue',[IssuebookController::class,'submitissue'])->name('s
 Route::get('/viewissue',[IssuebookController::class,'viewissuereport'])->name('viewissuereport');
 Route::get('/issuereport',[IssuereportController::class,'issuereport'])->name('issuereport');
 
-Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 
 //category
 Route::get('/addcategory',[AddcategoryController::class,'addcategory'])->name('addcategory');
