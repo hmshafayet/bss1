@@ -13,9 +13,9 @@
     </tr>
   </thead>
   <tbody>
-      @foreach($user as $data)
+      @foreach($user as $key=>$data)
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$data->name}}</td>
       <td>{{$data->email}}</td>
       <td>{{$data->role}}</td>

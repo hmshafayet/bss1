@@ -16,6 +16,15 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+       
+        if(auth()->user()->role=='admin') 
+        {
         return $next($request);
+        }
+        else
+        {
+        auth()->logout();
+        return redirect()->route('customer.login');
+        }
     }
 }

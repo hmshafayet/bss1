@@ -34,6 +34,7 @@ Route::post('/signup/store',[UserController::class,'signupformpost'])->name('use
 Route::get('/login',[UserController::class,'login'])->name('customer.login');
 Route::post('/login/post',[UserController::class,'loginpost'])->name('customer.login.post');
 
+
 Route::group(['prefix'=>'customer','middleware'=>'auth'],function(){
 
     Route::get('/logout',[UserController::class,'logout'])->name('customer.logout');
@@ -59,9 +60,10 @@ Route::get('/', function () {
 Route::get('admin/login',[BackendUser::class,'login'])->name('admin.login');
 Route::post('admin/login/post',[BackendUser::class,'loginpost'])->name('admin.login.post');
 
-     Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
-Route::get('/admin',[AdminController::class,'admin'])->name('admin');
+Route::group(['prefix'=>'admin','middleware'=>['auth','role']],function(){
+
+Route::get('/',[AdminController::class,'admin'])->name('admin');
 Route::get('/logout',[BackendUser::class,'logout'])->name('logout');
 //book
 Route::get('/addbook',[AddbookController::class,'addbook'])->name('addbook');
