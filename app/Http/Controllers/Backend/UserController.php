@@ -13,6 +13,8 @@ class UserController extends Controller
     {
     return view('admin.pages.login');
     }
+
+
     public function loginpost(Request $request)
     {
     $credentials=$request->except('_token');
@@ -20,21 +22,35 @@ class UserController extends Controller
 
     if (Auth::attempt($credentials))
     {
+        if(auth()->user()->role=='admin')
+        {
         return redirect()->route(route:'admin');
+        }
+        else
+        {
+            Auth::logout();
+            return redirect()->route(route:'user.signup');
+        }
+      
     }
     return redirect()->back()->with('message','User not recognized');
     }
+
+
+
     public function logout()
     {
         Auth::logout();
         return redirect()->route('admin.login');
     }
 
+
     public function customerlist()
     { 
         $user=User::where('role','=','customer')->get();
      return view ('admin.pages.customer',compact('user'));
     }
+
 
     public function userlist()
     {

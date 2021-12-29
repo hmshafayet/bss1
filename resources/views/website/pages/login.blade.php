@@ -8,7 +8,7 @@
 
 <div class="row">
 <div class="col-md-3">
-<h2> Register Here </h2>
+<h2> Login Here </h2>
 
 </div> 
 <div class="col-md-6">
@@ -28,13 +28,8 @@
     </div>
 @endif
 
-<form action="{{route('user.signup.store')}}" type="form" method="post">
+<form action="{{route('customer.login.post')}}" type="form" method="post">
   @csrf
-  
-<div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input required  name="name" type="text" class="form-control" id="name" placeholder="enter your name">
-  </div>
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -45,11 +40,7 @@
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input required name="password" placeholder="enter your password" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <div class="mb-3">
-    <label for="mobilenumber" class="form-label">Mobile</label>
-    <input required name="mobile" placeholder="enter your mobile number" type="text" class="form-control" id="mobile"  >
-  </div>
-  
+ 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div> 

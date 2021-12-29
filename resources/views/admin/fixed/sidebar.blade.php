@@ -10,7 +10,11 @@
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu"></span>
-                                {{auth()->user()->name}}
+                                @if(auth()->user())
+                                    {{auth()->user()->name}}
+                                
+                                @endif
+                                
                             </a>
                         </li>
                     

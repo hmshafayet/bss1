@@ -26,9 +26,20 @@ use App\Http\Controllers\Backend\StudentreportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/home',[HomeController::class,'home'])->name('home');
 Route::get('/signup',[UserController::class,'signupform'])->name('user.signup');
 Route::post('/signup/store',[UserController::class,'signupformpost'])->name('user.signup.store');
+
+
+Route::get('/login',[UserController::class,'login'])->name('customer.login');
+Route::post('/login/post',[UserController::class,'loginpost'])->name('customer.login.post');
+
+Route::group(['prefix'=>'customer','middleware'=>'auth'],function(){
+
+    Route::get('/logout',[UserController::class,'logout'])->name('customer.logout');
+
+});
+
 
 
 Route::get('/website', function () {
