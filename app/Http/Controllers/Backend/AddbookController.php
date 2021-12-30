@@ -19,12 +19,20 @@ class AddbookController extends Controller
     }
     public function submitbook(Request $request)
     {
-       //dd($request->all()); 
+        $bookimage=null;
+        if($request->hasFile('image')){
+            
+            $bookimage=date('Ymdhms').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads/book/',$bookimage);
+
+        }
+    //    dd($request->all()); 
        Book::create([
            //bam dike likhty hoy db er field er name, r dan dike likhty hoy input field name//
            'book_name'=>$request->booktitle,
            'ssl_no'=>$request->bookid,
            'author_name'=>$request->authorname,
+           'image'=>$bookimage,
            'category'=>$request->category,
            'description'=>$request->bookdescription,
            'price'=>$request->bookid,
@@ -35,7 +43,7 @@ class AddbookController extends Controller
     
     public function viewbookreport(){
         $viewbookreport=Book::all();
-        // dd($viewbookreport);
+    //    dd($viewbookreport);
         return view('admin.pages.bookreport',compact('viewbookreport'));
     }
 

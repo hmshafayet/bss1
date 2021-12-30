@@ -3,7 +3,7 @@
 @section('content')
 
  <h1>Add Book</h1>
- <form action="{{route('submitbook')}}" method="post">
+ <form action="{{route('submitbook')}}" method="post" enctype="multipart/form-data">
      @csrf
   <div class="form-group  col-md-10">
     <label for="exampleInputEmail1">Title of Book</label>
@@ -20,6 +20,12 @@
     <input name="bookid" type="number" class="form-control" id="exampleInputbookid" aria-describedby="bookidHelp" placeholder="Enter book id here">
     <small id="bookidHelp" class="form-text text-muted"></small>
   </div>
+  <div class="form-group col-md-10">
+    <label for="exampleInputImage">Image</label>
+    <input name="image" type="file" class="form-control" id="exampleInputImage" aria-describedby="imageHelp" placeholder="Insert image here">
+    <small id="imageHelp" class="form-text text-muted"></small>
+  </div>
+ 
   <div class="form-group col-md-10 ">
     <label for="exampleInputdescription">Description of Book</label>
     <input name="bookdescription" type="text" class="form-control" id="exampleInputdescription" aria-describedby="bookHelp" placeholder="Enter book description here">

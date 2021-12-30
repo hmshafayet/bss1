@@ -17,6 +17,7 @@
       <th scope="col">Book Name</th>
       <th scope="col">Book ISBN</th>
       <th scope="col">Author Name</th>
+      <th scope="col">Image</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
       <th scope="col">Status</th>
@@ -26,12 +27,15 @@
   </thead>
   <tbody>
    @foreach ($viewbookreport as $key=>$book)
-   
     <tr>
+   
       <td>{{$book->id}}</td>
       <td>{{$book->book_name}}</td>
       <td>{{$book->ssl_no}}</td>
       <td>{{$book->author_name}}</td>
+      <td>
+        <img src="{{url('uploads/uploads/book/'.$book->image)}}"width="100px">
+      </td>
       <td>{{optional($book->categories)->categoryname}}</td>
       <td>{{$book->quantity}}</td>
       <td>{{$book->status}}</td>
