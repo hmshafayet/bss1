@@ -14,6 +14,7 @@
   <thead>
     <tr>
     <th scope="col">#</th>
+      <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">StudentId</th>
       <th scope="col">Email</th>
@@ -23,16 +24,17 @@
     </tr>
   </thead>
    <tbody>
-     @foreach ($reports as $key=>$report)
+     @foreach ($reports as $key=>$student)
     <tr>
       <th>{{$key+1}}</th>
-      <td>{{$report->name}}</td>
-      <td>{{$report->student_id}}</td>
-      <td>{{$report->email}}</td>
+      <td><img style="border-radius: 4px;" width="100px;" src="{{url('uploads/uploads/student/'.$student->image)}}" alt="student" ></td>
+      <td>{{$student->name}}</td>
+      <td>{{$student->student_id}}</td>
+      <td>{{$student->email}}</td>
       <td></td>
       <td>
-        <a class="btn btn-primary" href="{{route('studentdetails',$report->id)}}">Details</a>
-        <a class="btn btn-info" href="{{route('studentdelete',$report->id)}}">Delete</a>
+        <a class="btn btn-primary" href="{{route('studentdetails',$student->id)}}">Details</a>
+        <a class="btn btn-info" href="{{route('studentdelete',$student->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach

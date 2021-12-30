@@ -15,8 +15,17 @@ class AddstudentController extends Controller
     
     public function submitstudent(Request $request)
     {
+        $studentimage=null;
+        if($request->hasFile('image'))
+        {
+            
+            $studentimage=date('Ymdhms').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads/student/',$studentimage);
+        }
+
         // dd($request->all()); 
     Student::create([   
+        'image'=>$studentimage,
         'name'=>$request->name,
         'student_id'=>$request->studentid,
         'email'=>$request->email,
