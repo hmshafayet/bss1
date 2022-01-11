@@ -574,7 +574,7 @@ body {
     text-align: center;
     border-radius: 50%;
     width: 72px;
-    height: 72px;
+    /* height: 72px; */
   }
   .services .icon i {
     font-size: 36px;

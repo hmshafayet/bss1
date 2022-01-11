@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\frontend\UserController;
-use App\Http\Controllers\Backend\UserController as BackendUser;
 use App\Http\Controllers\Backend\LogoutController;
 use App\Http\Controllers\Backend\AddbookController;
 use App\Http\Controllers\Backend\IssuebookController;
@@ -14,7 +13,9 @@ use App\Http\Controllers\Backend\BookreportController;
 use App\Http\Controllers\Backend\AddcategoryController;
 use App\Http\Controllers\Backend\BookrequestController;
 use App\Http\Controllers\Backend\IssuereportController;
+use App\Http\Controllers\frontend\BorrowbookController;
 use App\Http\Controllers\Backend\StudentreportController;
+use App\Http\Controllers\Backend\UserController as BackendUser;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ use App\Http\Controllers\Backend\StudentreportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/borrowbook',[BorrowbookController::class,'borrowbook'])->name('borrowbook');
+
 Route::get('/home',[HomeController::class,'home'])->name('home');
 Route::get('/signup',[UserController::class,'signupform'])->name('user.signup');
 Route::post('/signup/store',[UserController::class,'signupformpost'])->name('user.signup.store');
@@ -43,7 +46,7 @@ Route::group(['prefix'=>'customer','middleware'=>'auth'],function(){
 
 
 
-Route::get('/website', function () {
+Route::get('/', function () {
 
     $books=Book::all();
     
@@ -54,9 +57,10 @@ Route::get('/website', function () {
 // });
 
 
-Route::get('/', function () {
-    return view('admin.pages.home');
-});
+// Route::get('/', function () {
+//     return view('admin.pages.home');
+// });
+
 Route::get('admin/login',[BackendUser::class,'login'])->name('admin.login');
 Route::post('admin/login/post',[BackendUser::class,'loginpost'])->name('admin.login.post');
 

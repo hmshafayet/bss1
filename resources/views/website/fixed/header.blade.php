@@ -10,9 +10,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active " href="index.html">Home</a></li>
-          <li><a href="blog.html">Book Request</a></li>
-          <li><a href="contact.html">Search Book</a></li>
+          <li><a class="active " href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('borrowbook')}}">Borrow Book</a></li>
+          <li><a href="contact.html">Available Book</a></li>
 
           
           @if(auth()->user())
