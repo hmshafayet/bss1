@@ -12,7 +12,7 @@
         <ul>
           <li><a class="active " href="{{route('home')}}">Home</a></li>
           <li><a href="{{route('borrowbook')}}">Borrow Book</a></li>
-          <li><a href="contact.html">Available Book</a></li>
+          <li><a class="btn" style="color:white" id="scrollDownBtn">Available Book</a></li>
 
           
           @if(auth()->user())
@@ -38,3 +38,15 @@
 
     </div>
   </header><!-- End Header -->
+
+  <!-- Js ScrollDown -->
+  <script>
+       let btnScrolDown = document.getElementById("scrollDownBtn");
+       btnScrolDown.addEventListener("click",function(){
+            window.scrollTo({
+               top:700,
+               left:0,
+               behavior: 'smooth'
+            });
+       });
+    </script>
