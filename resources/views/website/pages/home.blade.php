@@ -61,8 +61,15 @@
              <div>
              <h4 class="title"><a href="">{{$item->book_name}}</a></h4>
              </div>
+             <!-- <div>
+             <h4 class="title"><a href="">{{$item->author_name}}</a></h4>
+             </div>
+             <div>
+             <h4 class="title"><a href="">{{$item->ssl_no}}</a></h4>
+             </div> -->
               <!-- <p class="description"></p> -->
-              <button class="btn btn-primary"> Borrow </button>
+              
+              <a href="{{route('cart.add',$item->id)}}" class="btn btn-primary">Borrow</a>
             </div>
           </div>
           @endforeach

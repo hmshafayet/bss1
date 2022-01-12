@@ -62,5 +62,11 @@ class AddbookController extends Controller
 
     }
 
+    public function bookedit($id)
+    {
+        $categories=Category::all();
+        return view ('admin.pages.bookedit',compact('categories'));
+    }
+
 
 }

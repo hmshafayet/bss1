@@ -13,11 +13,13 @@
           <li><a class="active " href="{{route('home')}}">Home</a></li>
           <li><a href="{{route('borrowbook')}}">Borrow Book</a></li>
           <li><a class="btn" style="color:white" id="scrollDownBtn">Available Book</a></li>
+          <a class="nav-link" href="{{route('cart.get')}}">My Book ({{session()->has('cart') ? count(session()->get('cart')):0}})</a>
+          <!-- <li><a class="btn" style="color:white" id="scrollDownBtn">My Book</a></li> -->
 
-          
           @if(auth()->user())
-           <li><a class="nav-item nav-link" href=" {{route('customer.logout')}}">Logout</a></li>
            <li><a class="nav-item nav-link" href="">{{auth()->user()->name}}</a></li>
+           <li><a class="nav-item nav-link" href=" {{route('customer.logout')}}">Logout</a></li>
+          
           
           @else
           <li class="dropdown"><a href=""><span>LogIn</span> <i class="bi bi-chevron-down"></i></a>

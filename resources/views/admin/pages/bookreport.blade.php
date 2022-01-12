@@ -58,6 +58,7 @@
       <td>
         <a class="btn btn-primary" href="{{route('bookdetails',$book->id)}}">Book Details</a>
         <a class="btn btn-info" href="{{route('bookdelete',$book->id)}}">Delete</a>
+        <a class="btn btn-info" href="{{route('bookedit',$book->id)}}">Edit</a>
       </td>
 
 
