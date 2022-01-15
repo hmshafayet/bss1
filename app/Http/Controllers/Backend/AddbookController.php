@@ -64,9 +64,42 @@ class AddbookController extends Controller
 
     public function bookedit($id)
     {
+        $book=Book::find($id);
+        
         $categories=Category::all();
-        return view ('admin.pages.bookedit',compact('categories'));
+        return view ('admin.pages.bookedit',compact('categories','book'));
     }
+   public function bookupdate(Request $request, $id)
+   {
+    $book=Book::find($id);
+    // dd($request->all());
+    
+    $image_name=$book->image;
+    //              step 1: check image exist in this request.
+            if($request->hasFile('image'))
+            {
+                // step 2: generate file name
+                $image_name=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+    
+                //step 3 : store into project directory
+    
+                $request->file('image')->storeAs('/uploads/book',$image_name);
+    
+            }
+    
 
+    $book=Book::find($id);
+    $book->update([
+           'book_name'=>$request->booktitle,
+           'ssl_no'=>$request->bookid,
+           'author_name'=>$request->authorname,
+           'image'=>$image_name,
+           'category'=>$request->category,
+           'description'=>$request->bookdescription,
+           'price'=>$request->bookid,
+           'quantity'=>$request->number,
 
+    ]);
+    return redirect ()->route('bookreport')->with('message','Book List Updated');
+   }
 }

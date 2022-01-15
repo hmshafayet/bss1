@@ -7,14 +7,26 @@
  <table class="table">
   <thead>
     <tr>
-      <th scope="col">StudentID</th>
-      <th scope="col">BookName</th>
-      <th scope="col">BookId</th>
-      <th scope="col">Avaibility</th>
-      <th scope="col">Days</th>
-      <th scope="col">Approval</th>
+      <th scope="col">BorrowID</th>
+      <!-- <th scope="col">StudentID</th> -->
+      <th scope="col">StudentName</th>
+      <th scope="col">IssueDate</th>
+      <th scope="col">ReturnDate</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
+  <tbody> 
+  @foreach($borrow as $key=>$data)
+  <tr>
+    <th scope="row">{{$key+1}}</th>
+    <td>{{$data->user->name}}</td>
+    <!-- <td>{{$data->borrow_id}}</td> -->
+    <td>{{$data->issue_date}}</td>
+    <td>{{$data->return_date}}</td>
+  </tr>
+  @endforeach
+ </tbody>  
   <!-- <tbody>
     <tr>
       <th scope="row">1</th>

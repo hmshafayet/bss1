@@ -85,8 +85,10 @@ Route::get('/bookreport',[BookreportController::class,'bookreport'])->name('book
 Route::get('/book/details/{id}',[AddbookController::class,'bookdetails'])->name('bookdetails');
 Route::get('/book/delete/{id}',[AddbookController::class,'bookdelete'])->name('bookdelete');
 Route::get('/book/edit/{id}',[AddbookController::class,'bookedit'])->name('bookedit');
+Route::put('/book/update/{id}',[AddbookController::class,'bookupdate'])->name('bookupdate');
 //
 Route::get('/bookrequest',[BookrequestController::class,'bookrequest'])->name('bookrequest');
+// Route::get('/viewbookrequest/{id}',[BookrequestController::class,'viewbookrequest'])->name('viewbookrequest');
 //user book request
 //Route::post('/submit/bookrequest',[BookrequestController::class,'submitbookrequest'])->name('submitbookrequest');
 //student

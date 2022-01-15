@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Borrow;
 use App\Models\Bookrequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BookrequestController extends Controller
 {
     public function bookrequest()
+
     {
-        return view('admin.pages.bookrequest');
+        $borrow=Borrow::with('user')->get();
+        // dd($borrow);
+        return view('admin.pages.bookrequest',compact('borrow') );
     }
     public function submitbookrequest(Request $request)
     {
