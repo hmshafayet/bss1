@@ -18,7 +18,7 @@ class CreateBorrowsTable extends Migration
             $table->string('user_id');
             $table->string('issue_date');
             $table->string('return_date');
-
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateBorrowdetailsTable extends Migration
             $table->id();
             $table->integer('book_id');
             $table->integer('borrow_id');
+           
             $table->timestamps();
         });
     }

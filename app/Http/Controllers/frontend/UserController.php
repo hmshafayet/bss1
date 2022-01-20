@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\Borrow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class UserController extends Controller
        'email'=>$request->email,
        'password'=>bcrypt($request->password),
        'role'=>'customer',
-       'mobile'=>bcrypt($request->mobile),
+       'mobile'=>$request->mobile,
        ]);
        return redirect()->back()->with('success','SignUp Successfull');
     }
@@ -61,6 +62,24 @@ class UserController extends Controller
      Auth::logout();
      return redirect()->route('customer.login');
     }
+    public function viewprofile(){
+        $profile=Auth::user();
+        // dd($profile);
+       $myCollection=Borrow::where('user_id',$profile->id)->get();
+        return view ('website.pages.profile',compact('profile','myCollection'));
+    }
+    public function cancel($id)
+    {
+       $data=Borrow::find($id);
+       $data->update(['status'=>'Canceled']);
+       return redirect ()->back();
+    }
+    public function requestdetails($id)
+    {
+        $requestdetails=Borrow::find($id);
     
+    return view ('website.pages.requestdetails',compact('requestdetails'));
+
+    }
     
 }

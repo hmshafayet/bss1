@@ -19,11 +19,18 @@
   <tbody> 
   @foreach($borrow as $key=>$data)
   <tr>
+  
     <th scope="row">{{$key+1}}</th>
     <td>{{$data->user->name}}</td>
     <!-- <td>{{$data->borrow_id}}</td> -->
     <td>{{$data->issue_date}}</td>
     <td>{{$data->return_date}}</td>
+    <td> {{$data->status}}<td>
+    <a class="btn btn-info" href="{{route('bookrequestdetails',$data->id)}}">View Details</a>
+    @if($data->status=='pending')
+    <a class="btn btn-dark" href="{{route('approve',$data->id)}}">Approval</a>
+    @endif
+    </td>
   </tr>
   @endforeach
  </tbody>  

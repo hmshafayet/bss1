@@ -19,7 +19,7 @@
           @if(auth()->user())
            <li><a class="nav-item nav-link" href="">{{auth()->user()->name}}</a></li>
            <li><a class="nav-item nav-link" href=" {{route('customer.logout')}}">Logout</a></li>
-          
+           <li><a href="{{route('view.profile')}}">My Profile</a></li>
           
           @else
           <li class="dropdown"><a href=""><span>LogIn</span> <i class="bi bi-chevron-down"></i></a>

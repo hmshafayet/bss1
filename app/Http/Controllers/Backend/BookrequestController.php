@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Borrow;
+use App\Models\Borrowdetail;
 use App\Models\Bookrequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class BookrequestController extends Controller
     }
     public function submitbookrequest(Request $request)
     {
-        dd($request->all()); 
+        // dd($request->all()); 
        Request::create ([
            'bookname'=>$request->booname,
            'bookid'=>$request->bookid,
@@ -27,5 +28,17 @@ class BookrequestController extends Controller
        return redirect()->back();
     }
     
+    public function approve($id)
+   {
+      $data=Borrow::find($id);
+      $data->update(['status'=>'Approved']);
+      return redirect ()->back();
+   }
+   public function bookrequestdetails($id)
+   {
+    $bookrequest=Borrowdetail::with('book')->where('borrow_id',$id)->get();
+    
+    return view ('admin.pages.bookrequestdetails',compact('bookrequest'));
 
+   }
 }

@@ -36,12 +36,17 @@ Route::post('/signup/store',[UserController::class,'signupformpost'])->name('use
 
 Route::get('/login',[UserController::class,'login'])->name('customer.login');
 Route::post('/login/post',[UserController::class,'loginpost'])->name('customer.login.post');
+Route::get('/viewprofile',[UserController::class,'viewprofile'])->name('view.profile');
+Route::get('/cancel/{id}',[UserController::class,'cancel'])->name('cancel');
+Route::get('/requestdetails/{id}',[UserController::class,'requestdetails'])->name('request.details');
 
 Route::group(['middleware'=>'web_auth'],function (){
     Route::get('/add-to-cart/{id}',[BorrowbookController::class,'addtocart'])->name('cart.add');
     Route::get('/get-cart',[BorrowbookController::class,'getcart'])->name('cart.get');
     Route::get('/clear-cart',[BorrowbookController::class,'clearcart'])->name('cart.clear');
     Route::post('/confirm-book',[BorrowbookController::class,'confirmbook'])->name('confirm.book');
+   
+
     // Route::get('/confirm-book',[BorrowbookController::class,'confirmbook'])->name('confirm.book');
 
 });
@@ -88,6 +93,8 @@ Route::get('/book/edit/{id}',[AddbookController::class,'bookedit'])->name('booke
 Route::put('/book/update/{id}',[AddbookController::class,'bookupdate'])->name('bookupdate');
 //
 Route::get('/bookrequest',[BookrequestController::class,'bookrequest'])->name('bookrequest');
+Route::get('/approve/{id}',[BookrequestController::class,'approve'])->name('approve');
+Route::get('/boookrequestdetails/{id}',[BookrequestController::class,'bookrequestdetails'])->name('bookrequestdetails');
 // Route::get('/viewbookrequest/{id}',[BookrequestController::class,'viewbookrequest'])->name('viewbookrequest');
 //user book request
 //Route::post('/submit/bookrequest',[BookrequestController::class,'submitbookrequest'])->name('submitbookrequest');
