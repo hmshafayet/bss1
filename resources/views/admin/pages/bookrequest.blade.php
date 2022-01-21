@@ -30,6 +30,10 @@
     @if($data->status=='pending')
     <a class="btn btn-dark" href="{{route('approve',$data->id)}}">Approval</a>
     @endif
+
+    <!-- @if($data->return_date <=now()) -->
+    <a class="btn btn-danger" href="">Return</a>
+    <!-- @endif -->
     </td>
   </tr>
   @endforeach

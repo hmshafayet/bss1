@@ -4,9 +4,11 @@ namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
 use App\Models\Borrow;
+use App\Models\Fine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -59,15 +61,66 @@ class UserController extends Controller
     
     public function logout()
     {
+        session()->forget('cart');
      Auth::logout();
      return redirect()->route('customer.login');
     }
-    public function viewprofile(){
+    public function viewprofile()
+    {
         $profile=Auth::user();
         // dd($profile);
        $myCollection=Borrow::where('user_id',$profile->id)->get();
+        $myBorrow=Borrow::where('user_id',auth()->user()->id)->where('status','Approved')->update([
+            'is_seen'=>1
+        ]);
+
+
         return view ('website.pages.profile',compact('profile','myCollection'));
     }
+
+    public function borrowReturn($id)
+    {
+
+        DB::beginTransaction();
+
+        try {
+        $borrow=Borrow::find($id);
+
+        //check time diff
+        $diffSec=time()-strtotime($borrow->return_date);
+        //convert it to days
+        $days=round($diffSec/(60*60*24),0)-1;
+
+        if($days>0){
+            //fine applicable
+            Fine::create([
+                'user_id'=>auth()->user()->id,
+                'borrow_id'=>$borrow->id,
+                'amount'=>$days*20
+            ]);
+        }
+       //simple return
+
+       $borrow->update([
+           'status'=>'return'
+        ]);
+
+
+        DB::commit();
+      
+      
+       // all good
+   } catch (\Exception $e) {
+       DB::rollback();
+       // something went wrong
+       return redirect()->back()->with('error','Something went wrong.');
+   }
+   return redirect()->back()->with('success','Book returned.');
+
+
+    }
+
+
     public function cancel($id)
     {
        $data=Borrow::find($id);

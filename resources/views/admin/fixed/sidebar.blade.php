@@ -8,7 +8,7 @@
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
                                 aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <i class="fas fa-users"></i>
                                 <span class="hide-menu"></span>
                                 @if(auth()->user())
                                     {{auth()->user()->name}}

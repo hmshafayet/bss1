@@ -37,6 +37,8 @@ Route::post('/signup/store',[UserController::class,'signupformpost'])->name('use
 Route::get('/login',[UserController::class,'login'])->name('customer.login');
 Route::post('/login/post',[UserController::class,'loginpost'])->name('customer.login.post');
 Route::get('/viewprofile',[UserController::class,'viewprofile'])->name('view.profile');
+Route::get('/borrow/return/{borrow_id}',[UserController::class,'borrowReturn'])->name('borrow.return');
+
 Route::get('/cancel/{id}',[UserController::class,'cancel'])->name('cancel');
 Route::get('/requestdetails/{id}',[UserController::class,'requestdetails'])->name('request.details');
 

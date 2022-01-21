@@ -2,8 +2,16 @@
 
 @section('content')
 
-
-
+@if(session()->has('success'))
+    <p class="alert alert-success">
+        {{ session()->get('success') }}
+</p>
+@endif
+@if(session()->has('error'))
+    <p class="alert alert-danger">
+        {{ session()->get('error') }}
+</p>
+@endif
 
 <div class="container emp-profile" style="padding:10px;">
             <form method="post">
@@ -73,9 +81,14 @@
       <td>{{$viewprofile->return_date}}</td>
       <td>
       <a class="btn btn-info" href="{{route('request.details',$viewprofile->id)}}">View Details</a>
-      <a class="btn btn-info" href="{{route('cancel',$viewprofile->id)}}">Cancel</a>   
-         
+      @if($viewprofile->status=='pending')
+      <a class="btn btn-danger" href="{{route('cancel',$viewprofile->id)}}">Cancel</a>   
+         @endif
+         @if($viewprofile->status=='Approved' && $viewprofile->return_date <=now())
+      <a href="{{route('borrow.return',$viewprofile->id)}}" class="btn btn-danger" href="">Return</a>
+      @endif
       </td>
+     
     </tr>
     @endforeach
   </tbody>
