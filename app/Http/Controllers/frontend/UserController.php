@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
 use App\Models\Borrow;
+use App\Models\Borrowdetail;
 use App\Models\Fine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -128,8 +129,10 @@ class UserController extends Controller
        return redirect ()->back();
     }
     public function requestdetails($id)
-    {
-        $requestdetails=Borrow::find($id);
+    { 
+        $requestdetails=Borrowdetail::with('book')->where('borrow_id',$id)->get();
+        
+        
     
     return view ('website.pages.requestdetails',compact('requestdetails'));
 

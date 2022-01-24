@@ -23,6 +23,8 @@ public function getcart()
 public function clearcart()
     {
         session()->forget('cart');
+
+      
         return redirect()->back()->with('message','Book Cart cleared successfully.');
 
     }
@@ -64,7 +66,17 @@ public function addtocart($id){
 
             return redirect()->back()->with('message', 'Book Added to My Book.');
         }
-        
+        //case 03: product exist into cart
+                //action: increase product quantity (quantity+1)
+
+                $cartExist[$id]['book_qty']=$cartExist[$id]['book_qty']+1;
+                //        dd($cartExist);
+                
+                
+                        session()->put('cart', $cartExist);
+                
+                        return redirect()->back()->with('message', 'Book Added to My Book.');
+                
 }
 public function confirmbook(Request $request){
     //   dd($request->all());  
