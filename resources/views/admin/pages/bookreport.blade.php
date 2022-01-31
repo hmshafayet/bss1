@@ -2,7 +2,9 @@
 
 @section('content')
 
- <h1>Book Report</h1>
+<div style="margin: 30px; background: #e4dcc4; padding: 20px;">
+
+ <h1 >Book Report</h1>
 
  @if(session()->has('success'))
     <p class="alert alert-success">
@@ -66,5 +68,7 @@
     @endforeach
   </tbody>
 </table>
+
+</div>
 
 @endsection

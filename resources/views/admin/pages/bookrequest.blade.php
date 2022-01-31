@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div style="margin: 60px; background: #edf1f5; padding: 20px;">
  <h1>Requested Book Details</h1>
 
  <table class="table">
@@ -31,33 +32,13 @@
     <a class="btn btn-dark" href="{{route('approve',$data->id)}}">Approval</a>
     @endif
 
-    <!-- @if($data->return_date <=now()) -->
-    <a class="btn btn-danger" href="">Return</a>
-    <!-- @endif -->
+   
     </td>
   </tr>
   @endforeach
  </tbody>  
-  <!-- <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody> -->
+ 
 </table>
+</div>
 
 @endsection

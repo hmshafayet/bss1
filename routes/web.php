@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\frontend\UserController;
 use App\Http\Controllers\Backend\LogoutController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\AddbookController;
 use App\Http\Controllers\Backend\IssuebookController;
 use App\Http\Controllers\Backend\AddstudentController;
@@ -27,7 +28,6 @@ use App\Http\Controllers\Backend\UserController as BackendUser;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/borrowbook',[BorrowbookController::class,'borrowbook'])->name('borrowbook');
 
 Route::get('/home',[HomeController::class,'home'])->name('home');
 Route::get('/signup',[UserController::class,'signupform'])->name('user.signup');
@@ -101,12 +101,12 @@ Route::get('/boookrequestdetails/{id}',[BookrequestController::class,'bookreques
 //user book request
 //Route::post('/submit/bookrequest',[BookrequestController::class,'submitbookrequest'])->name('submitbookrequest');
 //student
-Route::get('/addstudent',[AddstudentController::class,'addstudent'])->name('addstudent');
-Route::post('/submit/student',[AddstudentController::class,'submitstudent'])->name('submitstudent');
-Route::get('/viewstudent',[AddstudentController::class,'viewstudentreport'])->name('viewstudentreport');
-Route::get('/studentreport',[StudentreportController::class,'studentreport'])->name('studentreport');
-Route::get('/student/details/{id}',[AddstudentController::class,'studentdetails'])->name('studentdetails');
-Route::get('/student/delete/{id}',[AddstudentController::class,'studentdelete'])->name('studentdelete');
+
+// Route::post('/submit/student',[AddstudentController::class,'submitstudent'])->name('submitstudent');
+// Route::get('/viewstudent',[AddstudentController::class,'viewstudentreport'])->name('viewstudentreport');
+// Route::get('/studentreport',[StudentreportController::class,'studentreport'])->name('studentreport');
+// Route::get('/student/details/{id}',[AddstudentController::class,'studentdetails'])->name('studentdetails');
+// Route::get('/student/delete/{id}',[AddstudentController::class,'studentdelete'])->name('studentdelete');
 //issuebook
 Route::get('/issuebook',[IssuebookController::class,'issuebook'])->name('issuebook');
 Route::post('/submit/issue',[IssuebookController::class,'submitissue'])->name('submitissue');
@@ -121,5 +121,8 @@ Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categ
 
 Route::get('/customers',[BackendUser::class,'customerlist'])->name('customer.list');
 Route::get('/users',[BackendUser::class,'userlist'])->name('user.list');
+
+Route::get('/report',[ReportController::class,'report'])->name('admin.report');
+Route::post('Report/Search',[ReportController::class,'searchreport'])->name('admin.report.search');
 
 });

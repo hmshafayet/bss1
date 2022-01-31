@@ -10,10 +10,7 @@ use App\Http\Controllers\Controller;
 
 class BorrowbookController extends Controller
 {
-public function borrowbook()
-{
-    return view('website.pages.borrowbook');
-}
+
 public function getcart()
 {
    $carts= session()->get('cart');

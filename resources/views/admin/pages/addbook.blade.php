@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-
+<div style="margin: 30px; background: #edf1f5; padding: 20px;">
  <h1>Add Book</h1>
  <form action="{{route('submitbook')}}" method="post" enctype="multipart/form-data">
      @csrf
@@ -52,6 +52,7 @@
   
   
 </form>
+</div>
 
 
 @endsection

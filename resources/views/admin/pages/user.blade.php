@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div style="margin: 30px; background: #e4dcc4; padding: 20px;">
+
 <table class="table">
   <thead>
     <tr>
@@ -25,5 +27,6 @@
    
   </tbody>
 </table>
+</div>
 
 @endsection
