@@ -1,6 +1,7 @@
 @extends('website.master')
 
 @section('content')
+<div style="margin: 90px; background: #e4dcc4; padding: 20px;">
 
 <h1 style="padding-top: 100px;">My Book ({{session()->has('cart') ? count(session()->get('cart')):0}})</h1>
     <table class="table">
@@ -32,11 +33,13 @@
 
         </tbody>
     </table>
+
     <a href="{{route('cart.clear')}}" class="btn btn-danger">Clear Your Book</a>
 
     <div class="row">
     <div class="col-4">
 </div>
+
 <div class="col-4">
 </div>
     <div class="col-4">
@@ -59,6 +62,6 @@
     </div>
     </div>
     
-   
+    </div>
 
 @endsection

@@ -6,12 +6,11 @@
 
 
 
-<div class="row">
-<div class="col-md-3">
+<div style="margin: 140px 300px 140px 300px; background: #e4dcc4; padding: 20px;">
 <h2> Login Here </h2>
 
-</div> 
-<div class="col-md-6">
+
+
 @if(session()->has('success'))
     <p class="alert alert-success">
         {{ session()->get('success') }}
@@ -45,6 +44,7 @@
 </form>
 </div> 
 <div class="col-md-3"></div> 
+</div>
 </div>
 
 @endsection

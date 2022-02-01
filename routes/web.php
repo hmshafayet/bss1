@@ -120,6 +120,7 @@ Route::post('/submit/category',[AddcategoryController::class,'submitcategory'])-
 Route::get('/category/delete/{category_id}',[AddcategoryController::class,'categorydelete'])->name('category.delete');
 
 Route::get('/customers',[BackendUser::class,'customerlist'])->name('customer.list');
+Route::get('/delete/student/{id}',[BackendUser::class,'deletestudent'])->name('deletestudent');
 Route::get('/users',[BackendUser::class,'userlist'])->name('user.list');
 
 Route::get('/report',[ReportController::class,'report'])->name('admin.report');

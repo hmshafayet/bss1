@@ -26,8 +26,7 @@
         <th scope="row">{{$key+1}}</th>
         <td>{{$item->categoryname}}</td>
         <td>
-          <a href="" class="btn btn-info">View</a>
-          <a href="" class="btn btn-success">update</a>
+        
           <a class="btn btn-info" href="{{route('category.delete',$item->id)}}">Delete</a>
         </td>
       </tr>

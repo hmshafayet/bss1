@@ -50,6 +50,12 @@ class UserController extends Controller
         $user=User::where('role','=','customer')->get();
      return view ('admin.pages.customer',compact('user'));
     }
+    public function deletestudent($id)
+    {
+        User::find($id)->delete();
+        return redirect ()->back()->with('success','Student Deleted Succesfully');
+
+    }
 
 
     public function userlist()

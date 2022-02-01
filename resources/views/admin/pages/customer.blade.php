@@ -10,7 +10,7 @@
       <th scope="col">#</th>
       <th scope="col">User Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Type</th>
+      <th scope="col">Mobile</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -20,8 +20,8 @@
       <th scope="row">{{$key+1}}</th>
       <td>{{$data->name}}</td>
       <td>{{$data->email}}</td>
-      <td>{{$data->role}}</td>
-      <td>view</td>
+      <td>{{$data->mobile}}</td>
+      <td><a class="btn btn-dark" href="{{route('deletestudent',$data->id)}}">Delete</a></td>
     </tr>
     @endforeach
    
