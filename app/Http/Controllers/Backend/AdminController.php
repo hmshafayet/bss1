@@ -17,8 +17,9 @@ class AdminController extends Controller
         $return=Borrow::where('status','return')->count();
         $cancel=Borrow::where('status','Canceled')->count();
         $student=User::where('role','customer')->count();
+        $pending=Borrow::where('status','pending')->count();
         
        
-        return view('admin.pages.home', compact('book','approve','return','cancel','student'));
+        return view('admin.pages.home', compact('book','approve','return','cancel','student','pending'));
     }
 }

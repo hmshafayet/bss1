@@ -2,7 +2,9 @@
 
 @section('content')
 
- <h1>Add Book Category</h1>
+<div style="margin: 30px; background: #e4dcc4; padding: 20px;">
+
+ <h1><b>Add Book Category</b></h1>
  <form action="{{route('submitcategory')}}" method="post">
    @csrf
   <div class="form-group">
@@ -35,6 +37,6 @@
   </table>
 </div>
  
-
+</div>
 
 @endsection

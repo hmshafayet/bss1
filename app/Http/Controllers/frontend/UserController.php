@@ -145,6 +145,8 @@ class UserController extends Controller
        $data->update(['status'=>'Canceled']);
        return redirect ()->back();
     }
+
+
     public function requestdetails($id)
     { 
         $requestdetails=Borrowdetail::with('book')->where('borrow_id',$id)->get();
@@ -154,5 +156,38 @@ class UserController extends Controller
     return view ('website.pages.requestdetails',compact('requestdetails'));
 
     }
-    
+
+
+    public function profileedit($id)
+    {
+        $profile=User::find($id);
+        
+        return view ('website.pages.profileedit',compact('profile'));
+    }
+    public function profileupdate(Request $request,$id)
+    {
+        $profile=User::find($id);
+
+        $user_image=$profile->image;
+        //              step 1: check image exist in this request.
+                if($request->hasFile('image'))
+                {
+                    // step 2: generate file name
+                    $user_image=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+        
+                    //step 3 : store into project directory
+        
+                    $request->file('image')->storeAs('/uploads/users',$user_image);
+        
+                }
+         $profile=User::find($id);
+         $profile->update([
+                   'name'=>$request->name,
+                   'mobile'=>$request->mobile,
+                   'image'=>$user_image,
+           
+     ]);
+
+        return redirect ()->route('view.profile')->with('message','Profile Updated');
+    }
 }

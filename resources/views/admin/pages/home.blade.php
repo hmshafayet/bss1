@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
-<div style="margin: 10px 30px 90px 30px; background: #e4dcc4; padding: 20px;">
+<div style="margin: 10px 30px 90px 30px; background: #A1045A; padding: 20px;">
 <style>
         .card-box {
             position: relative;
@@ -139,6 +139,19 @@
                         <i class="fas fa-child"aria-hidden="true"></i>
                     </div>
                     <a href="{{route('customer.list')}}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="card-box bg-purple">
+                    <div class="inner">
+                        <h3> {{$pending}}</h3>
+                        <p> Pending Request</p>
+                    </div>
+                    <div class="icon">
+                        
+                        <i class="fas fa-sync fa-spin"  aria-hidden="true"></i>
+                    </div>
+                    <a href="{{route('bookrequest')}}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

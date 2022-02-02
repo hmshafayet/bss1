@@ -28,17 +28,22 @@ use App\Http\Controllers\Backend\UserController as BackendUser;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//registration
 Route::get('/home',[HomeController::class,'home'])->name('home');
 Route::get('/signup',[UserController::class,'signupform'])->name('user.signup');
 Route::post('/signup/store',[UserController::class,'signupformpost'])->name('user.signup.store');
 
-
+//login
 Route::get('/login',[UserController::class,'login'])->name('customer.login');
 Route::post('/login/post',[UserController::class,'loginpost'])->name('customer.login.post');
-Route::get('/viewprofile',[UserController::class,'viewprofile'])->name('view.profile');
-Route::get('/borrow/return/{borrow_id}',[UserController::class,'borrowReturn'])->name('borrow.return');
 
+//userprofile
+Route::get('/viewprofile',[UserController::class,'viewprofile'])->name('view.profile');
+Route::get('/profile/edit/{id}',[UserController::class,'profileedit'])->name('profile.edit');
+Route::put('/profile/update/{id}',[UserController::class,'profileupdate'])->name('profile.update');
+
+// borrow
+Route::get('/borrow/return/{borrow_id}',[UserController::class,'borrowReturn'])->name('borrow.return');
 Route::get('/cancel/{id}',[UserController::class,'cancel'])->name('cancel');
 Route::get('/requestdetails/{id}',[UserController::class,'requestdetails'])->name('request.details');
 
@@ -68,13 +73,7 @@ Route::get('/', function () {
     return view('website.pages.home',compact('books'));
 });
 
-// Route::group(['prefix'=>'website'],function(){
-// });
 
-
-// Route::get('/', function () {
-//     return view('admin.pages.home');
-// });
 
 Route::get('admin/login',[BackendUser::class,'login'])->name('admin.login');
 Route::post('admin/login/post',[BackendUser::class,'loginpost'])->name('admin.login.post');

@@ -3,7 +3,7 @@
 @section('content')
 
 <div style="margin: 60px; background: #edf1f5; padding: 20px;">
- <h1>Requested Book Details</h1>
+ <h1><b>Requested Book Details</b></h1>
 
  <table class="table">
   <thead>

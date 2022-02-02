@@ -22,42 +22,24 @@
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img src="{{url('/uploads/uploads/users',$profile->image)}}" style="width: 100px; height: 100px;border-radius: 100%;" alt=""/>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                               <h6>
-                               Hello,
-                            </h6>
-                                    <h1 style="text-transform: capitalize;"> 
+                            <h3 style="text-transform: capitalize;"> 
                                        {{$profile->name}}
-                                    </h1>
-                                    
-                                    <p class="proile-rating"> <span></span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Collection</a>
-                                </li>
-                                
-                            </ul>
+                            </h3>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                    <a class="btn btn-info" href="">Edit Profile</a>
-                        <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
-                    </div>
+                    
+                   
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>My interest</p>
-                            <a href="">Sports</a><br/>
-                            <a href="">Comics</a><br/>
-                            <a href="">Novel</a>
-                            
+                            <h6><b>Email:</b> {{$profile->email}}</h6>
+                            <h6><b>StudentID:</b> {{$profile->studentid}}</h6>
+                            <h6><b>Mobile:</b> {{$profile->mobile}}</h6>
+                            <a class="btn btn-info" href="{{route('profile.edit',$profile->id)}}">Edit Profile</a>
                         </div>
                     </div>
+                   
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">

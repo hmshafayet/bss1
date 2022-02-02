@@ -1,8 +1,8 @@
 @extends('welcome')
 
 @section('content')
-<div style="margin: 30px; background: #edf1f5; padding: 20px;">
- <h1>Add Book</h1>
+<div style="margin: 30px 120px 30px 120px; background: #edf1f5; padding: 5px;">
+ <h1 style="text-align: center;"><b>Add Book</b></h1>
  <form action="{{route('submitbook')}}" method="post" enctype="multipart/form-data">
      @csrf
   <div class="form-group  col-md-10">
