@@ -17,12 +17,27 @@ class UserController extends Controller
         return view ('website.pages.signup');
     }
     public function signupformpost(Request $request)
-    {
+    {  
+        $user_image=null;
+
+        if($request->hasFile('image'))
+        {
+        
+            // step 2: generate file name
+            $user_image=date('Ymdhms') .'.'. $request->file('image')->getClientOriginalExtension();
+        
+            //step 3 : store into project directory
+        
+            $request->file('image')->storeAs('/uploads/users/',$user_image);
+        
+        }  
        $request->validate([
         'name'=>'required',   
         'email'=>'required|email|unique:users,email',
         'password'=>'required|min:6',
-        'mobile'=>'required'
+        'mobile'=>'required',
+        'student_id'=>'required|min:6',
+        'image'=>'required',
        ]);
         //dd($request->all());
        User::create([
@@ -31,6 +46,8 @@ class UserController extends Controller
        'password'=>bcrypt($request->password),
        'role'=>'customer',
        'mobile'=>$request->mobile,
+       'studentid'=>$request->student_id,
+       'image'=>$user_image,
        ]);
        return redirect()->back()->with('success','SignUp Successfull');
     }

@@ -48,8 +48,8 @@ Route::group(['middleware'=>'web_auth'],function (){
     Route::get('/clear-cart',[BorrowbookController::class,'clearcart'])->name('cart.clear');
     Route::post('/confirm-book',[BorrowbookController::class,'confirmbook'])->name('confirm.book');
    
-
-    // Route::get('/confirm-book',[BorrowbookController::class,'confirmbook'])->name('confirm.book');
+    Route::get('/availablebook',[BorrowbookController::class,'availablebook'])->name('available.book');
+    
 
 });
 

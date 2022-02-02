@@ -102,4 +102,9 @@ public function confirmbook(Request $request){
           
         }
        
+  public function availablebook()
+  {
+      $books=Book::all();
+      return view('website.pages.availablebook',compact('books'));
+  }      
 }

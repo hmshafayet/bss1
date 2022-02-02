@@ -46,7 +46,7 @@
                         </li> -->
                         <li class="">
                             <a class=""
-                                aria-expanded="false">
+                                aria-expanded="false" style="padding-right: 20px; color: white; font-weight: bold; font-size: 20px;">
                         
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu"></span>

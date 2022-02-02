@@ -21,7 +21,8 @@ class UserstableSeeder extends Seeder
              'email'=>'admin@gmail.com',
              'password'=>bcrypt('123456'),
              'mobile'=>'01783360305',
-
+             'studentid'=>'null',
+            'image'=>'null',
             ]
             );
     }
