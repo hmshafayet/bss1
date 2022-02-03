@@ -38,7 +38,11 @@
                             <h6><b>Mobile:</b> {{$profile->mobile}}</h6>
                             <a class="btn btn-info" href="{{route('profile.edit',$profile->id)}}">Edit Profile</a>
                         </div>
-                    </div>
+    <div>           
+   <h2> <b>My Due </b> </h2>
+   <h3> {{$total_fine}} </h3>
+</div>
+    </div>
                    
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">

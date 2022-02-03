@@ -67,7 +67,14 @@ class UserController extends Controller
 // dd($credentials);
     if (Auth::attempt($credentials))
     {
-       
+        if(auth()->user()->role=='admin')
+
+        {  
+            
+     Auth::logout();
+     return redirect()->back()->with('success','Sorry, Admin can not login here');
+ 
+        }
     
         return redirect()->route('home');
         
@@ -87,13 +94,15 @@ class UserController extends Controller
     {
         $profile=Auth::user();
         // dd($profile);
+        $fine=Fine::where('user_id',auth()->user()->id)->get();
+        $total_fine=$fine->sum('amount');
        $myCollection=Borrow::where('user_id',$profile->id)->get();
         $myBorrow=Borrow::where('user_id',auth()->user()->id)->where('status','Approved')->update([
             'is_seen'=>1
         ]);
 
 
-        return view ('website.pages.profile',compact('profile','myCollection'));
+        return view ('website.pages.profile',compact('profile','myCollection','total_fine'));
     }
 
     public function borrowReturn($id)
