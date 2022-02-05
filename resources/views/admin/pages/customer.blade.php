@@ -3,7 +3,9 @@
 @section('content')
 
 <div style="margin: 30px; background: #e4dcc4; padding: 20px;">
-
+@if(session()->has('success'))
+			<span class="alert alert-danger">{{session()->get('success')}}</span>
+			@endif
 <table class="table">
   <thead>
     <tr>

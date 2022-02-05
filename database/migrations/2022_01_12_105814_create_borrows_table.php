@@ -15,8 +15,8 @@ class CreateBorrowsTable extends Migration
     {
         Schema::create('borrows', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->date('issue_date');
+            $table->foreignId('user_id')->constrained();
+            $table->date('issue_date'); 
             $table->date('return_date');
             $table->integer('is_seen')->default(0);
             $table->string('status')->default('pending');

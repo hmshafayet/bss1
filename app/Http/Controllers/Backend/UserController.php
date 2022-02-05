@@ -52,8 +52,17 @@ class UserController extends Controller
     }
     public function deletestudent($id)
     {
-        User::find($id)->delete();
-        return redirect ()->back()->with('success','Student Deleted Succesfully');
+        try
+        {
+            $user =User::find($id)->delete();
+
+            return redirect ()->back()->with('success','Student Deleted Succesfully');
+          
+          } catch (\Exception $e) {
+            return redirect ()->back()->with('success','You can not delete customer as customer has borrow.');
+        
+          }
+       
 
     }
 

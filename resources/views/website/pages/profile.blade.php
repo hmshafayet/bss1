@@ -40,7 +40,7 @@
                         </div>
     <div>           
    <h2> <b>My Due </b> </h2>
-   <h3> {{$total_fine}} </h3>
+   <h3> {{$total_fine}}Taka </h3>
 </div>
     </div>
                    
