@@ -78,8 +78,13 @@ public function addtocart($id){
 public function confirmbook(Request $request){
     //   dd($request->all());  
     $request->validate([
-        'issue_date'=>'required',
-        'return_date'=>'required',
+    
+        'issue_date'=>['after:yesterday, required'],
+        'return_date'=>['after:issue_date, required'],
+        
+        
+
+        
     ]);
    $borrow=Borrow::create([
         'user_id'=>auth()->user()->id,

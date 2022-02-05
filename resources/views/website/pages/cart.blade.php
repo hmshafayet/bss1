@@ -1,6 +1,19 @@
 @extends('website.master')
 
 @section('content')
+@if($errors->any())
+    <div class="alert alert-danger">
+        <p><strong>Opps Something went wrong</strong></p>
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    </div>
+@endif
+@if(session('error'))
+    <div class="alert alert-danger">{{session('error')}}</div>
+@endif
 <div style="margin: 90px; background: #e4dcc4; padding: 20px;">
 
 <h1 style="padding-top: 100px;">My Book ({{session()->has('cart') ? count(session()->get('cart')):0}})</h1>
