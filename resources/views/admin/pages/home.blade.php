@@ -75,7 +75,7 @@
                 <div class="card-box bg-secondary">
                     <div class="inner">
                         <h3> {{$book}} </h3>
-                        <p> Available Books </p>
+                        <p> Books </p>
                     </div>
                     <div class="icon">
                      

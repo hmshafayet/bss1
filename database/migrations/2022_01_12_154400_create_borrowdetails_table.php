@@ -15,7 +15,7 @@ class CreateBorrowdetailsTable extends Migration
     {
         Schema::create('borrowdetails', function (Blueprint $table) {
             $table->id();
-            $table->integer('book_id');
+            $table->foreignId('book_id')->constrained();
             $table->integer('borrow_id');
            
             $table->timestamps();

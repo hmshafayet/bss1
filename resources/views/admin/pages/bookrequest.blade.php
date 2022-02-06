@@ -31,6 +31,7 @@
     @if($data->status=='pending')
     <a class="btn btn-dark" href="{{route('approve',$data->id)}}">Approval</a>
     @endif
+    
 
    
     </td>

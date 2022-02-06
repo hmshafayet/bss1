@@ -124,5 +124,5 @@ Route::get('/users',[BackendUser::class,'userlist'])->name('user.list');
 
 Route::get('/report',[ReportController::class,'report'])->name('admin.report');
 Route::post('Report/Search',[ReportController::class,'searchreport'])->name('admin.report.search');
-
+Route::get('/stock',[AdminController::class,'stock'])->name('stock');
 });

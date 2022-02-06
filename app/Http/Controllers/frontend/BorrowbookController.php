@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use Carbon\Carbon;
 use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\Borrowdetail;
@@ -26,7 +27,10 @@ public function clearcart()
 
     }
 public function addtocart($id){
+    
     $books=Book::find($id);
+    if($books->quantity>0)
+    {
     if(!$books)
     {
         return redirect()->back()->with('error','No book found.');
@@ -63,24 +67,20 @@ public function addtocart($id){
 
             return redirect()->back()->with('message', 'Book Added to My Book.');
         }
-        //case 03: product exist into cart
-                //action: increase product quantity (quantity+1)
-
-                $cartExist[$id]['book_qty']=$cartExist[$id]['book_qty']+1;
-                //        dd($cartExist);
-                
-                
-                        session()->put('cart', $cartExist);
-                
-                        return redirect()->back()->with('message', 'Book Added to My Book.');
+    }
+    notify()->error('Book Not available');
+    return redirect()->back();
                 
 }
 public function confirmbook(Request $request){
     //   dd($request->all());  
+    $date1=Carbon::createFromFormat('Y-m-d',$request->issue_date);
+    $todate=$date1->addDays(7);
+  
     $request->validate([
     
         'issue_date'=>['after:yesterday, required'],
-        'return_date'=>['after:issue_date, required'],
+        'return_date'=>['before:'.$todate.', required'],
         
         
 
@@ -96,6 +96,9 @@ public function confirmbook(Request $request){
 
     foreach($carts as $key=>$data)
     {
+
+        $book=Book::find($key);
+        $book->decrement('quantity',1);
         Borrowdetail::create([
             'borrow_id'=>$borrow->id,
             'book_id'=>$key

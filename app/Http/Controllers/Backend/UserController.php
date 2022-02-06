@@ -59,7 +59,7 @@ class UserController extends Controller
             return redirect ()->back()->with('success','Student Deleted Succesfully');
           
           } catch (\Exception $e) {
-            return redirect ()->back()->with('success','You can not delete customer as customer has borrow.');
+            return redirect ()->back()->with('success','You can not delete student as student has borrow.');
         
           }
        

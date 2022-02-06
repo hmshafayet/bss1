@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\Book;
+use App\Models\Fine;
 use App\Models\User;
 use App\Models\Borrow;
 use App\Models\Borrowdetail;
-use App\Models\Fine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -131,6 +132,13 @@ class UserController extends Controller
        $borrow->update([
            'status'=>'return'
         ]);
+        $borrow=Borrowdetail::where('borrow_id',$borrow->id)->get();
+        foreach($borrow as $detail)
+        {
+            $book=Book::find($detail->book_id);
+            $book->increment('quantity',1);
+        }
+        
 
 
         DB::commit();

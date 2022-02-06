@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex justify-cntent-center align-items-center">
+<section id="hero" class="d-flex justify-cntent-center align-items-center" style="z-index:-999999">
     <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
       <!-- Slide 1 -->
@@ -13,6 +13,11 @@
           <p class="animate__animated animate__fadeInUp">Register to get our service</p>
         </div>
       </div>
+      @if(session()->has('message'))
+    <p class="alert alert-success">
+        {{ session()->get('message') }}
+</p>
+@endif
 
       <!-- Slide 2 -->
       <!-- <div class="carousel-item">

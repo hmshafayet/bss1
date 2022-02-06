@@ -55,10 +55,20 @@ class AddbookController extends Controller
 
     }
     public function bookdelete($id)
-    {
-        Book::find($id)->delete();
-        return redirect ()->back()->with('success','Book Deleted Succesfully');
-       // dd($book);
+    {   
+        try
+        {
+            $book =Book::find($id)->delete();
+
+            return redirect ()->back()->with('success','Book Deleted Succesfully');
+          
+          } catch (\Exception $e) {
+            return redirect ()->back()->with('success','You can not delete book as book has borrow.');
+        
+          }
+    //     Book::find($id)->delete();
+    //     return redirect ()->back()->with('success','Book Deleted Succesfully');
+    //    // dd($book);
 
     }
 

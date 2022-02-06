@@ -17,7 +17,7 @@
   </div>
   <div class="form-group col-md-10">
     <label for="exampleInputAuthor">Book ID</label>
-    <input name="bookid" type="number" class="form-control" id="exampleInputbookid" aria-describedby="bookidHelp" placeholder="Enter book id here">
+    <input name="bookid" type="number" min="1000" class="form-control" id="exampleInputbookid" aria-describedby="bookidHelp" placeholder="Enter book id here">
     <small id="bookidHelp" class="form-text text-muted"></small>
   </div>
   <div class="form-group col-md-10">
@@ -46,7 +46,7 @@
     </div>
   <div class="form-group col-md-10 ">
     <label for="exampleInputNumber of Issues">Number of Issues Book</label>
-    <input name="number" type="number" class="form-control" id="exampleInputNumber of Issues" placeholder="Number of Issues">
+    <input name="number" type="number" class="form-control" id="exampleInputNumber of Issues" min="1" placeholder="Number of Issues">
   </div>
   <button type="submit" class="btn btn-info">Add Book</button>
   

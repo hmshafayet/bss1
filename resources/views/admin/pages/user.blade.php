@@ -11,7 +11,6 @@
       <th scope="col">User Name</th>
       <th scope="col">Email</th>
       <th scope="col">Type</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +20,6 @@
       <td>{{$data->name}}</td>
       <td>{{$data->email}}</td>
       <td>{{$data->role}}</td>
-      <td>view</td>
     </tr>
     @endforeach
    

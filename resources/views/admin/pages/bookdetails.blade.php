@@ -5,8 +5,11 @@
  <h1>Book Details</h1>
  <div id="divToPrint">
     
-     <p>Book Name:{{$book->book_name}}</p>
-     <p>Author Name:{{$book->author_name}}</p>
+     <p><b>Book Name:</b>{{$book->book_name}}</p>
+     <p><b>Author Name:</b>{{$book->author_name}}</p>
+     <p><b>Description:</b>{{$book->description}}</p>
+     <p><b>Book ISBN:</b>{{$book->ssl_no}}</p>
+
 
     
 </div>  

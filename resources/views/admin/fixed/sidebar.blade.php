@@ -50,14 +50,20 @@
                                 <span class="hide-menu">Report</span>
                             </a>
                         </li>
-                       
-                       
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('addcategory')}}"
                                 aria-expanded="false">
                                 <!-- <i class="fa fa-columns" aria-hidden="true"></i> -->
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Add Category</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('stock')}}"
+                                aria-expanded="false">
+                                
+                                <i class="fas fa-clipboard-list"aria-hidden="true"></i>
+                                <span class="hide-menu">Stock</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

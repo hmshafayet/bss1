@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  @notifyCss
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -41,7 +42,7 @@
 <body>
 
 @include('website.fixed.header')
-
+@include('notify::components.notify')
   @yield('content')
 
   @include('website.fixed.footer')
@@ -58,7 +59,7 @@
   <script src="{{url('frontend/js/swiper-bundle.min.js')}}"></script>
   <script src="{{url('frontend/js/noframework.waypoints.js')}}"></script>
   <script src="{{url('frontend/js/validate.js')}}"></script>
-
+  @notifyJs
   <!-- Template Main JS File -->
   <script src="{{url('frontend/js/main.js')}}"></script>
 
