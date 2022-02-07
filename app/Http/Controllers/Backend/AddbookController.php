@@ -35,7 +35,6 @@ class AddbookController extends Controller
            'image'=>$bookimage,
            'category'=>$request->category,
            'description'=>$request->bookdescription,
-           'price'=>$request->bookid,
            'quantity'=>$request->number,
        ]);
        return redirect()->back();

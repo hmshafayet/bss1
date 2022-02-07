@@ -32,12 +32,10 @@
   <thead>
     <tr>
     <th scope="col">Sl</th>
-      <th scope="col">Book Name</th>
-      <th scope="col">Book ISBN</th>
+      <th scope="col">Book Name</th> 
       <th scope="col">Author Name</th>
       <th scope="col">Image</th>
       <th scope="col">Category</th>
-      <th scope="col">Quantity</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
       <th scope="col"></th>
@@ -49,13 +47,11 @@
    
       <td>{{$key+1}}</td>
       <td>{{$book->book_name}}</td>
-      <td>{{$book->ssl_no}}</td>
       <td>{{$book->author_name}}</td>
       <td>
         <img style="border-radius: 4px;" width="100px;" src="{{url('uploads/uploads/book/'.$book->image)}}" alt="book" >
       </td>
       <td>{{optional($book->categories)->categoryname}}</td>
-      <td>{{$book->quantity}}</td>
       <td>{{$book->status}}</td>
       <td>
         <a class="btn btn-primary" href="{{route('bookdetails',$book->id)}}">Book Details</a>

@@ -21,7 +21,6 @@ class CreateBooksTable extends Migration
             $table->string('image');
             $table->string('category');
             $table->string('description');
-            $table->integer('price');
             $table->integer('quantity');
             $table->string('status')->default('available');
             $table->timestamps();

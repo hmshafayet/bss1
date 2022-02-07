@@ -6,7 +6,7 @@
 
 <div class="form-row">
 
-    <div  class="form-group col-md-4">
+      <div  class="form-group col-md-4" >
         <form action="{{route('admin.report.search')}}" method="post">
             @csrf
             <label for="inputPassword4">From date</label>
@@ -20,37 +20,49 @@
         </form>
 
       </div>
-      <table class="table table-striped">
-      <thead>
-        <tr>
-            <th scope="col">BorrowID</th>
-            <th scope="col">BookName</th>
-            <th scope="col">StudentName</th>
-            <th scope="col">Issue Date</th>
-            <th scope="col">Return Date</th>
-         
-           
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($viewreport as $key=>$report)
-        <tr>
-        <th scope="row">{{$key+1}}
-            <td>{{ $report->book->book_name}}</td>
-            <td>{{ $report->borrow->user->name}}</td>
-            <td>{{ $report->borrow->issue_date}}</td>
-            <td>{{ $report->borrow->return_date}}</td>
-     
+      <div id="divToPrint">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th scope="col">BorrowID</th>
+                <th scope="col">BookName</th>
+                <th scope="col">StudentName</th>
+                <th scope="col">Issue Date</th>
+                <th scope="col">Return Date</th>
+            
+              
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($viewreport as $key=>$report)
+            <tr>
+            <th scope="row">{{$key+1}}
+                <td>{{ $report->book->book_name}}</td>
+                <td>{{ $report->borrow->user->name}}</td>
+                <td>{{ $report->borrow->issue_date}}</td>
+                <td>{{ $report->borrow->return_date}}</td>
+              </tr>
+            @endforeach
 
-
-          </tr>
-        @endforeach
-
-        
-      </tbody>
-    </table>
-
+            
+          </tbody>
+        </table>
       </div>
+   <input class="btn btn-warning" type="button" onClick="PrintDiv('divToPrint');" value="Print">
+   </div>
+
+      
+     
+      
 </div>
 
-@endsection
+ @endsection
+ <script language="javascript">
+ function PrintDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>

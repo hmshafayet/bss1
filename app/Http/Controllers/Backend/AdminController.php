@@ -23,7 +23,9 @@ class AdminController extends Controller
         return view('admin.pages.home', compact('book','approve','return','cancel','student','pending'));
     }
     public function stock()
-    {
- return view('admin.pages.stock');
+    { 
+        $quantity=Book::all();
+        // dd($quantity);
+    return view('admin.pages.stock',compact('quantity'));
     }
 }

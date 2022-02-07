@@ -33,7 +33,7 @@ public function addtocart($id){
     {
     if(!$books)
     {
-        return redirect()->back()->with('error','No book found.');
+        return redirect()->back()->with('error','Sorry, this book is stock out');
     }
     $cartExist=session()->get('cart');
 // dd($cartExist);
@@ -74,6 +74,7 @@ public function addtocart($id){
 }
 public function confirmbook(Request $request){
     //   dd($request->all());  
+    //   dd(session('cart'));
     $date1=Carbon::createFromFormat('Y-m-d',$request->issue_date);
     $todate=$date1->addDays(7);
   
@@ -94,15 +95,23 @@ public function confirmbook(Request $request){
 
     $carts= session()->get('cart');
 
+    //for dectrementing the quantity. 
     foreach($carts as $key=>$data)
     {
 
         $book=Book::find($key);
-        $book->decrement('quantity',1);
-        Borrowdetail::create([
+            $book->decrement('quantity',1);
+            Borrowdetail::create([
             'borrow_id'=>$borrow->id,
             'book_id'=>$key
         ]);
+        if ($book->quantity==0) {
+            $book->update([
+                'status'=>'Not Available'
+            ]);
+        }
+        
+        
     }
 
     session()->forget('cart');

@@ -4,6 +4,7 @@
 
 <h1>Request Details</h1>
 
+<div style="margin: 60px; background: #edf1f5; padding: 20px;">
 <div class="container">
 
 <table class="table">
@@ -31,5 +32,5 @@
   </tbody>
 </table>
 </div>
-
+</div>
 @endsection
