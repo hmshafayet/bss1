@@ -37,7 +37,10 @@ class AddbookController extends Controller
            'description'=>$request->bookdescription,
            'quantity'=>$request->number,
        ]);
-       return redirect()->back();
+      
+       return redirect()->back()->with('success','New Book Added Successfully');
+    
+       
     }
     
     public function viewbookreport(){

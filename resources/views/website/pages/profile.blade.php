@@ -39,7 +39,7 @@
                             <a class="btn btn-info" href="{{route('profile.edit',$profile->id)}}">Edit Profile</a>
                         </div>
     <div>           
-   <h2> <b>My Due </b> </h2>
+   <h2> <b>Total Fine </b> </h2>
    <h3> {{$total_fine}}Taka </h3>
 </div>
     </div>

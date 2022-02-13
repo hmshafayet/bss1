@@ -82,7 +82,7 @@ class UserController extends Controller
        
     }
       
-    return redirect()->back()->with('message','User not recognized');
+    return redirect()->back()->with('success','You are not registerd, Please SignUp First');
     }
     
     public function logout()

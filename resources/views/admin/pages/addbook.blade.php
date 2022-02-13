@@ -2,6 +2,11 @@
 
 @section('content')
 <div style="margin: 30px 120px 30px 120px; background: #edf1f5; padding: 5px;">
+@if(session()->has('success'))
+    <p class="alert alert-success">
+        {{ session()->get('success') }}
+</p>
+@endif
  <h1 style="text-align: center;"><b>Add Book</b></h1>
  <form action="{{route('submitbook')}}" method="post" enctype="multipart/form-data">
      @csrf
