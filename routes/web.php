@@ -95,7 +95,10 @@ Route::put('/book/update/{id}',[AddbookController::class,'bookupdate'])->name('b
 //
 Route::get('/bookrequest',[BookrequestController::class,'bookrequest'])->name('bookrequest');
 Route::get('/approve/{id}',[BookrequestController::class,'approve'])->name('approve');
+Route::get('/receive/{id}',[BookrequestController::class,'receive'])->name('receive');
 Route::get('/boookrequestdetails/{id}',[BookrequestController::class,'bookrequestdetails'])->name('bookrequestdetails');
+
+
 // Route::get('/viewbookrequest/{id}',[BookrequestController::class,'viewbookrequest'])->name('viewbookrequest');
 //user book request
 //Route::post('/submit/bookrequest',[BookrequestController::class,'submitbookrequest'])->name('submitbookrequest');
@@ -107,6 +110,7 @@ Route::get('/boookrequestdetails/{id}',[BookrequestController::class,'bookreques
 // Route::get('/student/details/{id}',[AddstudentController::class,'studentdetails'])->name('studentdetails');
 // Route::get('/student/delete/{id}',[AddstudentController::class,'studentdelete'])->name('studentdelete');
 //issuebook
+
 Route::get('/issuebook',[IssuebookController::class,'issuebook'])->name('issuebook');
 Route::post('/submit/issue',[IssuebookController::class,'submitissue'])->name('submitissue');
 Route::get('/viewissue',[IssuebookController::class,'viewissuereport'])->name('viewissuereport');

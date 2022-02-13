@@ -121,7 +121,16 @@ public function confirmbook(Request $request){
        
   public function availablebook()
   {
+    $key=null;
+    if(request()->search){
+        $key=request()->search;
+        $books = Book::with('categories')
+            ->where('book_name','LIKE','%'.$key.'%')
+            ->orWhere('author_name','LIKE','%'.$key.'%')
+            ->get();
+        return view('website.pages.availablebook',compact('books','key'));
+    }
       $books=Book::all();
-      return view('website.pages.availablebook',compact('books'));
+      return view('website.pages.availablebook',compact('books','key'));
   }      
 }

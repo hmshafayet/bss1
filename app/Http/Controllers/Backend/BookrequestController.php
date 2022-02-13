@@ -34,6 +34,12 @@ class BookrequestController extends Controller
       $data->update(['status'=>'Approved']);
       return redirect ()->back();
    }
+   public function receive($id)
+   {
+    $data=Borrow::find($id);
+    $data->update(['status'=>'Received']);
+    return redirect ()->back();
+   }
    public function bookrequestdetails($id)
    {
     $bookrequest=Borrowdetail::with('book')->where('borrow_id',$id)->get();

@@ -1,6 +1,24 @@
 @extends('website.master')
 
 @section('content')
+<div style="margin: 60px;">
+<form action="{{route('available.book')}}" method="GET">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <input value="{{$key}}" type="text" placeholder="Search for books,author" name="search" class="form-control">
+        </div>
+        <div  class="col-md-4">
+            <button type="submit" class="btn btn-dark">Search</button>
+        </div>
+    </div>
+    </form>
+    @if($key)
+    <h4>
+         {{$key}} : <b>Total Result Found:<b> {{$books->count()}}
+    </h4>
+@endif
+</div>
 
 <section class="services"> 
       <div class="container">

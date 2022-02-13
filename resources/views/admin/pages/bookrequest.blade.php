@@ -28,6 +28,11 @@
     <td>{{$data->return_date}}</td>
     <td> {{$data->status}}<td>
     <a class="btn btn-info" href="{{route('bookrequestdetails',$data->id)}}">View Details</a>
+
+    @if($data->status=='return')
+    <a class="btn btn-success" href="{{route('receive',$data->id)}}">Confirm Return</a>
+    @endif
+
     @if($data->status=='pending')
     <a class="btn btn-dark" href="{{route('approve',$data->id)}}">Approval</a>
     @endif
